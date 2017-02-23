@@ -1,0 +1,364 @@
+// ~->[DNET-1]->~
+
+// File created by an unlicensed user using Netica 5.24 on Feb 23, 2017 at 12:21:08 UTC.
+
+bnet uk_vegetables {
+numdimensions = 1;
+autoupdate = TRUE;
+whenchanged = 1487852368;
+
+visual V1 {
+	defdispform = LABELBOX;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (0, 0, 1616, 618);
+	resolution = 72;
+	drawingbounds = (1895, 929);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet target {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+
+node world_oil_price {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "World Oil Price";
+	whenchanged = 1487077629;
+	visual V1 {
+		center = (120, 438);
+		dispform = BELIEFBARS;
+		height = 5;
+		};
+	};
+
+node ukveg_labour_cost {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "UK Vegetable Labour Cost";
+	whenchanged = 1487078759;
+	visual V1 {
+		center = (384, 438);
+		dispform = BELIEFBARS;
+		height = 10;
+		};
+	};
+
+node ukveg_production_cost {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = (world_oil_price, ukveg_labour_cost);
+	title = "UK Vegetable Production Cost";
+	whenchanged = 1487078922;
+	visual V1 {
+		center = (384, 342);
+		dispform = BELIEFBARS;
+		height = 9;
+		};
+	};
+
+node world_vegetable_price {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "World Vegetable Price";
+	whenchanged = 1487077632;
+	visual V1 {
+		center = (642, 342);
+		dispform = BELIEFBARS;
+		height = 14;
+		};
+	};
+
+node ukveg_demand {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "UK Vegetable Demand";
+	whenchanged = 1487077618;
+	visual V1 {
+		center = (120, 342);
+		dispform = BELIEFBARS;
+		height = 4;
+		};
+	};
+
+node ukveg_waste {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "UK Vegetable Waste";
+	whenchanged = 1487107309;
+	visual V1 {
+		center = (618, 150);
+		dispform = BELIEFBARS;
+		height = 13;
+		};
+	};
+
+node ukveg_pest_controls {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (sufficient, insufficient);
+	statetitles = ("Sufficient", "Insufficient");
+	parents = ();
+	title = "UK Vegetable Pest Controls";
+	whenchanged = 1487100987;
+	visual V1 {
+		center = (132, 54);
+		dispform = BELIEFBARS;
+		height = 1;
+		};
+	};
+
+node ukveg_adverse_weather {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "UK Vegetable Adverse Weather";
+	whenchanged = 1487101489;
+	visual V1 {
+		center = (648, 54);
+		dispform = BELIEFBARS;
+		height = 11;
+		};
+	};
+
+node ukveg_planting_area {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = ();
+	title = "UK Vegetable Planting Area";
+	whenchanged = 1487100527;
+	visual V1 {
+		center = (132, 150);
+		dispform = BELIEFBARS;
+		height = 2;
+		};
+	};
+
+node ukveg_production {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = (ukveg_pest_controls, ukveg_adverse_weather, ukveg_planting_area);
+	title = "UK Vegetable Production";
+	whenchanged = 1487100535;
+	visual V1 {
+		center = (378, 54);
+		dispform = BELIEFBARS;
+		height = 6;
+		};
+	};
+
+node ukveg_supply {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = (ukveg_waste, ukveg_production);
+	delays = (
+		(0),
+		(0));
+	title = "UK Vegetable Supply";
+	whenchanged = 1487100166;
+	visual V1 {
+		center = (378, 150);
+		dispform = BELIEFBARS;
+		height = 8;
+		};
+	};
+
+node ukveg_imports {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = (ukveg_demand, ukveg_supply);
+	title = "UK Vegetable Imports";
+	whenchanged = 1487103952;
+	visual V1 {
+		center = (120, 246);
+		dispform = BELIEFBARS;
+		height = 3;
+		};
+	};
+
+node ukveg_retailer_policy {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (profit, cost);
+	statetitles = ("Profit", "Cost");
+	parents = ();
+	title = "UK Vegetable Retailer Policy";
+	whenchanged = 1487104308;
+	visual V1 {
+		center = (636, 246);
+		dispform = BELIEFBARS;
+		height = 12;
+		};
+	};
+
+node ukveg_price {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (high, moderate, low);
+	statetitles = ("High", "Moderate", "Low");
+	parents = (world_vegetable_price, ukveg_imports, ukveg_production_cost, ukveg_retailer_policy);
+	probs = 
+		// High         Moderate     Low           // world_vegetable_price ukveg_imports ukveg_production_cost ukveg_retailer_policy 
+		  (0.9,         0.08,        0.02,         // High                  High          High                  Profit                
+		   0.8,         0.15,        0.05,         // High                  High          High                  Cost                  
+		   0.9,         0.08,        0.02,         // High                  High          Moderate              Profit                
+		   @undef,      @undef,      @undef,       // High                  High          Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // High                  High          Low                   Profit                
+		   @undef,      @undef,      @undef,       // High                  High          Low                   Cost                  
+		   0.9,         0.08,        0.02,         // High                  Moderate      High                  Profit                
+		   @undef,      @undef,      @undef,       // High                  Moderate      High                  Cost                  
+		   @undef,      @undef,      @undef,       // High                  Moderate      Moderate              Profit                
+		   @undef,      @undef,      @undef,       // High                  Moderate      Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // High                  Moderate      Low                   Profit                
+		   @undef,      @undef,      @undef,       // High                  Moderate      Low                   Cost                  
+		   0.7,         0.2,         0.1,          // High                  Low           High                  Profit                
+		   @undef,      @undef,      @undef,       // High                  Low           High                  Cost                  
+		   @undef,      @undef,      @undef,       // High                  Low           Moderate              Profit                
+		   @undef,      @undef,      @undef,       // High                  Low           Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // High                  Low           Low                   Profit                
+		   @undef,      @undef,      @undef,       // High                  Low           Low                   Cost                  
+		   0.8,         0.15,        0.05,         // Moderate              High          High                  Profit                
+		   @undef,      @undef,      @undef,       // Moderate              High          High                  Cost                  
+		   0.8,         0.15,        0.05,         // Moderate              High          Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Moderate              High          Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              High          Low                   Profit                
+		   @undef,      @undef,      @undef,       // Moderate              High          Low                   Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      High                  Profit                
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      High                  Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      Low                   Profit                
+		   @undef,      @undef,      @undef,       // Moderate              Moderate      Low                   Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Low           High                  Profit                
+		   @undef,      @undef,      @undef,       // Moderate              Low           High                  Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Low           Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Moderate              Low           Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Moderate              Low           Low                   Profit                
+		   0.7,         0.2,         0.1,          // Moderate              Low           Low                   Cost                  
+		   0.5,         0.25,        0.25,         // Low                   High          High                  Profit                
+		   0.6,         0.3,         0.1,          // Low                   High          High                  Cost                  
+		   0.7,         0.2,         0.1,          // Low                   High          Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Low                   High          Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Low                   High          Low                   Profit                
+		   @undef,      @undef,      @undef,       // Low                   High          Low                   Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Moderate      High                  Profit                
+		   @undef,      @undef,      @undef,       // Low                   Moderate      High                  Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Moderate      Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Low                   Moderate      Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Moderate      Low                   Profit                
+		   @undef,      @undef,      @undef,       // Low                   Moderate      Low                   Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Low           High                  Profit                
+		   @undef,      @undef,      @undef,       // Low                   Low           High                  Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Low           Moderate              Profit                
+		   @undef,      @undef,      @undef,       // Low                   Low           Moderate              Cost                  
+		   @undef,      @undef,      @undef,       // Low                   Low           Low                   Profit                
+		   0.3,         0.4,         0.3);         // Low                   Low           Low                   Cost                  ;
+	numcases = 
+		                 // world_vegetable_price ukveg_imports ukveg_production_cost ukveg_retailer_policy 
+		  (1,            // High                  High          High                  Profit                
+		   1,            // High                  High          High                  Cost                  
+		   1,            // High                  High          Moderate              Profit                
+		   0,            // High                  High          Moderate              Cost                  
+		   0,            // High                  High          Low                   Profit                
+		   0,            // High                  High          Low                   Cost                  
+		   1,            // High                  Moderate      High                  Profit                
+		   0,            // High                  Moderate      High                  Cost                  
+		   0,            // High                  Moderate      Moderate              Profit                
+		   0,            // High                  Moderate      Moderate              Cost                  
+		   0,            // High                  Moderate      Low                   Profit                
+		   0,            // High                  Moderate      Low                   Cost                  
+		   1,            // High                  Low           High                  Profit                
+		   0,            // High                  Low           High                  Cost                  
+		   0,            // High                  Low           Moderate              Profit                
+		   0,            // High                  Low           Moderate              Cost                  
+		   0,            // High                  Low           Low                   Profit                
+		   0,            // High                  Low           Low                   Cost                  
+		   1,            // Moderate              High          High                  Profit                
+		   0,            // Moderate              High          High                  Cost                  
+		   1,            // Moderate              High          Moderate              Profit                
+		   0,            // Moderate              High          Moderate              Cost                  
+		   0,            // Moderate              High          Low                   Profit                
+		   0,            // Moderate              High          Low                   Cost                  
+		   0,            // Moderate              Moderate      High                  Profit                
+		   0,            // Moderate              Moderate      High                  Cost                  
+		   0,            // Moderate              Moderate      Moderate              Profit                
+		   0,            // Moderate              Moderate      Moderate              Cost                  
+		   0,            // Moderate              Moderate      Low                   Profit                
+		   0,            // Moderate              Moderate      Low                   Cost                  
+		   0,            // Moderate              Low           High                  Profit                
+		   0,            // Moderate              Low           High                  Cost                  
+		   0,            // Moderate              Low           Moderate              Profit                
+		   0,            // Moderate              Low           Moderate              Cost                  
+		   0,            // Moderate              Low           Low                   Profit                
+		   1,            // Moderate              Low           Low                   Cost                  
+		   1,            // Low                   High          High                  Profit                
+		   1,            // Low                   High          High                  Cost                  
+		   1,            // Low                   High          Moderate              Profit                
+		   0,            // Low                   High          Moderate              Cost                  
+		   0,            // Low                   High          Low                   Profit                
+		   0,            // Low                   High          Low                   Cost                  
+		   0,            // Low                   Moderate      High                  Profit                
+		   0,            // Low                   Moderate      High                  Cost                  
+		   0,            // Low                   Moderate      Moderate              Profit                
+		   0,            // Low                   Moderate      Moderate              Cost                  
+		   0,            // Low                   Moderate      Low                   Profit                
+		   0,            // Low                   Moderate      Low                   Cost                  
+		   0,            // Low                   Low           High                  Profit                
+		   0,            // Low                   Low           High                  Cost                  
+		   0,            // Low                   Low           Moderate              Profit                
+		   0,            // Low                   Low           Moderate              Cost                  
+		   0,            // Low                   Low           Low                   Profit                
+		   1);           // Low                   Low           Low                   Cost                  ;
+	title = "UK Vegetable Price";
+	whenchanged = 1487852368;
+	visual V1 {
+		center = (384, 246);
+		dispform = BELIEFBARS;
+		height = 7;
+		};
+	};
+NodeSet target {Nodes = (ukveg_price);};
+};
