@@ -39,29 +39,26 @@
   {\endminipage\par\medskip}
 
 \title{Dynamic Bayesian Networks for Decision Support: \\UK Vegetable Supply Model\\\& GUI for Model Outputs}
-\author{Lee Sheng Long\\
+\author{Lee Sheng Long (23318325)\\
 \href{mailto:sllee26@student.monash.edu}{sllee26}@student.monash.edu\\
-\href{mailto:s.lee.21@warwick.ac.uk}{s.lee.21}@warwick.ac.uk
+\href{mailto:s.lee.21@warwick.ac.uk}{s.lee.21}@warwick.ac.uk\\
+\url{https://github.com/slee21}
 }
 
 \lhead{Monash University Research Projects Abroad 2017}
 \chead{}
-\rhead{Lee Sheng Long}
+\rhead{Lee Sheng Long (23318325)}
 \headheight=16pt
 
 \begin{document}
 \newgeometry{hmargin=1.0in, vmargin=0.75in}
 % Title page
-\date{19th February 2017}
+\date{19th March 2017}
 \maketitle
 
-\begin{abstract}
-
-\end{abstract}
-
-\begin{multicols*}{2}
+\begin{multicols}{2}
 \tableofcontents
-\end{multicols*}
+\end{multicols}
 
 %Essay content
 \clearpage
@@ -70,7 +67,80 @@
 \pagenumbering{arabic}
 \pagestyle{fancy}
 \begin{multicols}{2}
+\section{Introduction}\label{sec:introduction}
+I spent 8 weeks in January and February of 2017 doing research projects under supervision by Dr. Martine J. Barons, Professor Ann E. Nicholson and Professor Jim Q. Smith.
+
+The first project was to model UK vegetable supply with Bayesian Networks. It was more research-based.
+
+The second project was to develop a simple Graphical User Interface (GUI) for model outputs. It was more application-based.
+\section{UK Vegetable Supply Model}\label{sec:statsmodel}
+\subsection{Motivation}
+The recent UK vegetable shortage illustrated the utility and importance of the project \parencite{bbc2017}. 
+
+Such a model could be useful to discover key factors behind the shortage and guide corrective measures to alleviate the shortage and prevent further recurrences. It could also predict price movements allowing time to prepare.
+
+The resultant UK vegetable supply network would be integrated into a larger network based on the CPI food basket to model overall food supply in the UK.
+
+It would ultimately contribute to a Decision Support System (DSS) for policy makers in the area of food security.
+\subsection{Results}
+The resultant partially parametrised Bayesian Network is described in \ref{subsubsec:network1} and is available for download at \url{https://github.com/slee21/murpa}.
+\subsection{Limitations}
+Time constraints resulted in some limitations:
+\begin{itemize}
+\item Network is only partially parametrised with Conditional Probability Tables (CPT)
+\item Expert elicitations only involved 1 expert, Rob Lillywhite of Warwick Crop Centre
+\end{itemize}
+\subsection{Future Work}
+Potential productive avenues for future work:
+\begin{itemize}
+\item Fully parametrize the network with CPTs
+\item Expert elicitations with more experts
+\item Sensitivity analysis on the network
+\end{itemize}
+\section{GUI for Model Outputs}\label{sec:guidevel}
+\subsection{Motivation}
+The Netica software package interface is targeted at practitioners familiar with Bayesian Networks, statistics and probability. 
+
+Most policy makers likely lack the requisite knowledge and would be confused operating the Netica interface. Thus, a new interface targeted at policy makers would be useful.
+
+The resultant GUI would provide a user-friendly interface for display and interaction with the model outputs aimed at policy makers with little background in statistics.
+\subsection{Results}
+The resultant frontend GUI is described in \ref{subsubsec:network1} and is available for download at \url{https://github.com/slee21/bayeslayers}. The backend JSON API server is available for download at \url{https://github.com/slee21/gonetica}.
+\subsection{Limitations}
+Time constraints resulted in some limitations:
+\begin{itemize}
+\item Saving data to and loading data from local files remains unimplemented
+\item Interface look and feel is rudimentary and unpolished
+\item Hardcoded or unconfigurable options and settings
+\end{itemize}
+\subsection{Future Work}
+Potential productive avenues for future work:
+\begin{itemize}
+\item Implement local file saving and loading
+\item Implement server side saving and loading
+\item Redesign and polish interface look and feel
+\item Expand configurable options and settings
+\item Implement distributed collaboration
+\item Redesign and optimize transfer protocol
+\end{itemize}
+\section{Key Takeaways}\label{sec:takeaways}
+\subsection{Insight into Academia}
+I had the opportunity to speak with non-teaching academics which would otherwise be difficult as an undergraduate. I also met PhD candidates and other postgraduate students. They provided different perspectives of academia.
+\subsection{Research Experience}
+I learned the dreadful practicality of Bayesian Networks. They were particularly useful when data was scarce. This was readily apparent in the modeling of the UK vegetable supply where often times the only sources were human wisdom.
+\subsection{Development Experience}
+I experienced the difficulties of working with a closed-source proprietary API (Netica API). I also gained the experience of developing a simple JSON API server and accompanying single page web application client.
+\section{Conclusion}\label{sec:conclusion}
+MURPA was a valuable learning experience in many ways. It helped settle most of my doubts or worries about continuing on towards honours. 
+
+I want to thank my supervisors Dr. Martine J. Barons, Professor Ann E. Nicholson and Professor Jim Q. Smith for their kind guidance. 
+
+I also want to thank Dr. Arun Konagurthu and Caitlin Slattery for enabling and supporting the MURPA program.
+
+Finally, I would like to apologise for any shortcomings on my part and wish any successor MURPA students reading this all the best with your projects.
 \end{multicols}
+
+\clearpage
 \printbibliography
 
 \clearpage
@@ -193,6 +263,9 @@ Prior to second the meeting with Andy Davis, a rough prototype GUI \ref{subsec:s
 
 There was a tentatively positive response to the rough prototype GUI at the meeting. Minor tweaks were suggested before a final meeting was planned for the departure week. The desired map boundaries were confirmed. Also, inference was confirmed to only produce expected values.
 \subsection{Departure Report}\label{subsec:departure}
+Unfortunately, progress on the GUI was blocked by some bugs. There was no significant progress to show at the final meeting.
+
+The rest of the week was spent preparing for departure and attempting to debug the GUI Javascript frontend. Accommodation check-out went without issue. Final report was written-up.
 \end{multicols*}
 
 \clearpage
@@ -385,5 +458,9 @@ Once a Bayesian Network is selected, the user may modify the node states or valu
 \begin{center}
 \includegraphics[width=0.8\linewidth]{v0infer}
 \end{center}
-
+\subsection{GUI screenshots after departure}\label{subsec:screens1}
+The text inputs have been replaced with dropdown menus where it made sense.
+\begin{center}
+\includegraphics[width=0.8\linewidth]{v1nodes}
+\end{center}
 \end{document}
